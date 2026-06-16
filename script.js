@@ -59,6 +59,26 @@ function initStarryBackground() {
     // Fondo base muy oscuro para que resalten las luces
     ctx.clearRect(0, 0, width, height);
 
+    // Dibujar Constelaciones (líneas finas entre algunas estrellas)
+    ctx.lineWidth = 0.4;
+    const constellationCount = Math.min(stars.length, 50); // Usar hasta 50 estrellas para armar constelaciones
+    for (let i = 0; i < constellationCount; i++) {
+      for (let j = i + 1; j < constellationCount; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 120) {
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          const opacity = (1 - distance / 120) * 0.15; // Opacidad muy sutil y elegante
+          ctx.strokeStyle = `rgba(253, 245, 201, ${opacity})`; // Color dorado sutil
+          ctx.stroke();
+        }
+      }
+    }
+
     // Dibujar Estrellas Normales
     stars.forEach(star => {
       // Mover suavemente
