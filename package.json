@@ -1,0 +1,14 @@
+{
+  "name": "delfina-15-invitacion",
+  "version": "1.0.0",
+  "description": "Invitación interactiva para los 15 años de Delfina Belén Cuello",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
