@@ -241,14 +241,13 @@ function initRSVPForm() {
     
     const name = document.getElementById('guest-name').value;
     const attendance = document.querySelector('input[name="attendance"]:checked').value;
-    const diet = document.getElementById('dietary-preference').value;
+    const comments = document.getElementById('comments').value;
 
     let message = `¡Hola Delfina! 😊\n\nQuiero confirmar mi asistencia a tus 15 años.\n\n*Nombre:* ${name}\n*Asistencia:* ${attendance === 'si' ? '✅ Sí, asistiré' : '❌ No podré asistir'}`;
     
     if (attendance === 'si') {
-      if (diet !== 'ninguno') {
-        const dietText = document.querySelector(`#dietary-preference option[value="${diet}"]`).innerText;
-        message += `\n*Preferencia de Menú:* ${dietText}`;
+      if (comments.trim() !== '') {
+        message += `\n*Menú Especial:* ${comments}`;
       }
     }
 
@@ -256,19 +255,7 @@ function initRSVPForm() {
     window.open(whatsappUrl, '_blank');
   });
 
-  // Ocultar dieta si no asiste
-  const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
-  const dietGroup = document.getElementById('diet-group');
-  
-  attendanceRadios.forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      if (e.target.value === 'no') {
-        dietGroup.style.display = 'none';
-      } else {
-        dietGroup.style.display = 'flex';
-      }
-    });
-  });
+
 }
 
 /* ==========================================================================
