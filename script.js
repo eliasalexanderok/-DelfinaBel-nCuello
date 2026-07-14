@@ -242,7 +242,6 @@ function initRSVPForm() {
     const name = document.getElementById('guest-name').value;
     const attendance = document.querySelector('input[name="attendance"]:checked').value;
     const diet = document.getElementById('dietary-preference').value;
-    const comments = document.getElementById('comments').value;
 
     let message = `¡Hola Delfina! 😊\n\nQuiero confirmar mi asistencia a tus 15 años.\n\n*Nombre:* ${name}\n*Asistencia:* ${attendance === 'si' ? '✅ Sí, asistiré' : '❌ No podré asistir'}`;
     
@@ -251,10 +250,6 @@ function initRSVPForm() {
         const dietText = document.querySelector(`#dietary-preference option[value="${diet}"]`).innerText;
         message += `\n*Preferencia de Menú:* ${dietText}`;
       }
-    }
-
-    if (comments.trim() !== '') {
-      message += `\n\n*Comentarios:* ${comments}`;
     }
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
